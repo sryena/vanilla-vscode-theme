@@ -6,10 +6,10 @@
   <title>Paleta Vainilla</title>
   <style>
     :root {
-      --vainilla: #F5E8C0;
-      --gris: #E6DBB6;
-      --gris-hondo: #D9CCA2;
-      --borde: #CDBF96;
+      --vainilla: #F7E49B;
+      --gris: #DDD2A6;
+      --gris-hondo: #D0C495;
+      --borde: #C3B788;
       --cafe: #654027;
       --cafe-suave: #7F6A4A;
       --comentario: #857455;
@@ -20,11 +20,11 @@
       --lavanda: #7D4FAA;
       --lavanda-fondo: #E6DCF2;
       --celeste: #286A96;
-      --melocoton: #A84E12;
+      --melocoton: #A34C12;
       --melocoton-fondo: #F7CFA4;
       --mostaza: #7C5E0C;
       --rosa: #A3427B;
-      --linea: #EEDFB2;
+      --linea: #ECD993;
       --mono: "Fira Code", "JetBrains Mono", ui-monospace, monospace;
     }
     * { box-sizing: border-box; }
@@ -54,7 +54,7 @@
     .titulo { background: var(--gris-hondo); padding: 6px 12px; text-align: center; color: var(--cafe-suave); border-bottom: 1px solid var(--borde); }
     .cuerpo { display: grid; grid-template-columns: 44px 210px 1fr; min-height: 380px; }
     .iconos { background: var(--gris-hondo); border-right: 1px solid var(--borde); display: flex; flex-direction: column; align-items: center; gap: 14px; padding-top: 12px; }
-    .icono { width: 20px; height: 20px; border-radius: 4px; background: #98875F55; position: relative; }
+    .icono { width: 20px; height: 20px; border-radius: 4px; background: #83795455; position: relative; }
     .icono.activo { background: var(--cafe); box-shadow: -12px 0 0 -9px var(--lavanda); }
     .insignia { position: absolute; right: -7px; bottom: -6px; background: var(--cereza); color: var(--vainilla); border-radius: 8px; font-size: 9px; padding: 0 4px; }
     .lateral { background: var(--gris); border-right: 1px solid var(--borde); padding: 8px 0; }
@@ -62,20 +62,20 @@
     .archivo { padding: 2px 12px 2px 22px; display: flex; justify-content: space-between; }
     .archivo.sel { background: var(--lavanda-fondo); }
     .archivo .letra { font-size: 11px; }
-    .nuevo { color: var(--menta); } .mod { color: var(--melocoton); } .borr { color: var(--cereza); text-decoration: line-through; } .sinseg { color: var(--lavanda); } .ign { color: #A08F6A; }
+    .nuevo { color: var(--menta); } .mod { color: var(--melocoton); } .borr { color: var(--cereza); text-decoration: line-through; } .sinseg { color: var(--lavanda); } .ign { color: #938962; }
     .editor { display: flex; flex-direction: column; min-width: 0; }
     .pestanas { display: flex; background: var(--gris); border-bottom: 1px solid var(--borde); }
     .pestana { padding: 6px 14px; color: var(--cafe-suave); border-right: 1px solid var(--borde); }
     .pestana.activa { background: var(--vainilla); color: var(--cafe); box-shadow: inset 0 2px 0 var(--lavanda); }
     .codigo { flex: 1; background: var(--vainilla); padding: 8px 0; overflow-x: auto; }
     .l { display: grid; grid-template-columns: 6px 34px 1fr; white-space: pre; }
-    .l .n { color: #B0A07A; text-align: right; padding-right: 12px; }
+    .l .n { color: #9F9260; text-align: right; padding-right: 12px; }
     .l .g { }
     .l.actual { background: var(--linea); } .l.actual .n { color: var(--cafe); }
     .l.mas { background: var(--menta-fondo); } .l.mas .g { background: var(--menta); }
     .l.menos { background: var(--cereza-fondo); } .l.menos .g { background: var(--cereza); }
     .l.cambio .g { background: var(--melocoton); }
-    .com { color: var(--comentario); font-style: italic; } .kw { color: var(--lavanda); } .str { color: var(--menta); } .fn { color: var(--celeste); } .num { color: var(--melocoton); } .tag { color: var(--cereza); } .attr { color: var(--mostaza); } .typ { color: var(--rosa); } .punt { color: #98875F; }
+    .com { color: var(--comentario); font-style: italic; } .kw { color: var(--lavanda); } .str { color: var(--menta); } .fn { color: var(--celeste); } .num { color: var(--melocoton); } .tag { color: var(--cereza); } .attr { color: var(--mostaza); } .typ { color: var(--rosa); } .punt { color: #837954; }
     .sel-texto { background: var(--lavanda-fondo); }
     .busca { background: #F4BB85; }
     .cursor { border-left: 2px solid var(--cereza); margin-left: -1px; }
@@ -178,13 +178,13 @@
   <table>
     <thead><tr><th>#</th><th>Zona</th><th>Color</th></tr></thead>
     <tbody>
-      <tr><td><span class="m">1</span></td><td>Barra de título (arriba del todo)</td><td>Vainilla grisáceo hondo <code>#D9CCA2</code></td></tr>
+      <tr><td><span class="m">1</span></td><td>Barra de título (arriba del todo)</td><td>Vainilla grisáceo hondo <code>#D0C495</code></td></tr>
       <tr><td><span class="m">2</span></td><td>Barra de iconos (izquierda). La raya del icono activo</td><td>Vainilla grisáceo hondo · raya en lavanda</td></tr>
       <tr><td><span class="m">3</span></td><td>Globito con número sobre un icono (cambios pendientes)</td><td>Cereza</td></tr>
-      <tr><td><span class="m">4</span></td><td>Barra lateral: explorador, búsqueda, Git</td><td>Vainilla grisáceo <code>#E6DBB6</code> · selección en lavanda pálido</td></tr>
+      <tr><td><span class="m">4</span></td><td>Barra lateral: explorador, búsqueda, Git</td><td>Vainilla grisáceo <code>#DDD2A6</code> · selección en lavanda pálido</td></tr>
       <tr><td><span class="m">5</span></td><td>Nombres de archivo según Git</td><td>Nuevo (A) menta · modificado (M) melocotón · borrado (D) cereza · sin seguimiento (U) lavanda · ignorado gris</td></tr>
       <tr><td><span class="m">6</span></td><td>Pestañas</td><td>Activa en vainilla con raya lavanda arriba · inactivas en vainilla grisáceo</td></tr>
-      <tr><td><span class="m">7</span></td><td>Editor y comentarios</td><td>Fondo vainilla <code>#F5E8C0</code> · texto café · comentarios gris cálido en cursiva</td></tr>
+      <tr><td><span class="m">7</span></td><td>Editor y comentarios</td><td>Fondo vainilla <code>#F7E49B</code> · texto café · comentarios gris cálido en cursiva</td></tr>
       <tr><td><span class="m">8</span></td><td>Línea añadida (Git)</td><td>Raya del margen menta · fondo menta claro en la vista de cambios</td></tr>
       <tr><td><span class="m">9</span></td><td>Línea borrada (Git)</td><td>Raya cereza · fondo cereza claro en la vista de cambios</td></tr>
       <tr><td><span class="m">10</span></td><td>Línea modificada (Git)</td><td>Raya del margen melocotón</td></tr>
@@ -202,27 +202,27 @@
   <p>El número de la derecha es el contraste sobre el fondo vainilla: a partir de 4,5 se lee bien (WCAG AA).</p>
 
   <div class="fichas">
-    <div class="ficha"><div class="muestra" style="background:var(--vainilla);border-bottom:1px solid var(--borde)"><span>Aa</span></div><div class="txt"><h3>Vainilla</h3><div class="hex">#F5E8C0</div><ul><li>Fondo del editor</li><li>Pestaña activa, terminal, campos de texto</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--vainilla);border-bottom:1px solid var(--borde)"><span>Aa</span></div><div class="txt"><h3>Vainilla</h3><div class="hex">#F7E49B</div><ul><li>Fondo del editor</li><li>Pestaña activa, terminal, campos de texto</li></ul></div></div>
 
-    <div class="ficha"><div class="muestra" style="background:var(--gris)"><span>Aa</span></div><div class="txt"><h3>Vainilla grisáceo</h3><div class="hex">#E6DBB6 · hondo #D9CCA2</div><ul><li>Barra lateral, pestañas inactivas</li><li>Menús, ventanas emergentes, autocompletado</li><li>El hondo: barra de iconos, de título y de estado</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--gris)"><span>Aa</span></div><div class="txt"><h3>Vainilla grisáceo</h3><div class="hex">#DDD2A6 · hondo #D0C495</div><ul><li>Barra lateral, pestañas inactivas</li><li>Menús, ventanas emergentes, autocompletado</li><li>El hondo: barra de iconos, de título y de estado</li></ul></div></div>
 
-    <div class="ficha"><div class="muestra" style="background:var(--cafe);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">7,4</span></div><div class="txt"><h3>Café con leche</h3><div class="hex">#654027</div><ul><li>Todo el texto normal y las variables</li><li>Parámetros (en cursiva)</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--cafe);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">7,1</span></div><div class="txt"><h3>Café con leche</h3><div class="hex">#654027</div><ul><li>Todo el texto normal y las variables</li><li>Parámetros (en cursiva)</li></ul></div></div>
 
-    <div class="ficha"><div class="muestra" style="background:var(--comentario);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">3,7</span></div><div class="txt"><h3>Gris cálido</h3><div class="hex">#857455</div><ul><li>Comentarios, en cursiva (a propósito más suaves)</li><li>Pistas de VS Code dentro del código</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--comentario);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">3,6</span></div><div class="txt"><h3>Gris cálido</h3><div class="hex">#857455</div><ul><li>Comentarios, en cursiva (a propósito más suaves)</li><li>Pistas de VS Code dentro del código</li></ul></div></div>
 
-    <div class="ficha"><div class="muestra" style="background:var(--menta);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,7</span></div><div class="txt"><h3>Menta</h3><div class="hex">#26734F · fondo #D8F0E2</div><ul><li>Líneas añadidas (+) y archivos nuevos</li><li>Textos entre comillas y valores de atributos</li><li>Código en línea en Markdown</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--menta);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,5</span></div><div class="txt"><h3>Menta</h3><div class="hex">#26734F · fondo #D8F0E2</div><ul><li>Líneas añadidas (+) y archivos nuevos</li><li>Textos entre comillas y valores de atributos</li><li>Código en línea en Markdown</li></ul></div></div>
 
-    <div class="ficha"><div class="muestra" style="background:var(--cereza);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,7</span></div><div class="txt"><h3>Cereza</h3><div class="hex">#B23A55 · fondo #F7DCE1</div><ul><li>Líneas borradas (−) y archivos borrados</li><li>Errores, el cursor y los globitos de aviso</li><li>Etiquetas HTML, selectores de etiqueta en CSS y títulos de Markdown</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--cereza);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,6</span></div><div class="txt"><h3>Cereza</h3><div class="hex">#B23A55 · fondo #F7DCE1</div><ul><li>Líneas borradas (−) y archivos borrados</li><li>Errores, el cursor y los globitos de aviso</li><li>Etiquetas HTML, selectores de etiqueta en CSS y títulos de Markdown</li></ul></div></div>
 
-    <div class="ficha"><div class="muestra" style="background:var(--lavanda);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,8</span></div><div class="txt"><h3>Lavanda</h3><div class="hex">#7D4FAA · pálido #E6DCF2</div><ul><li>Palabras clave: <code>if</code>, <code>def</code>, <code>class</code>, <code>return</code>, <code>const</code></li><li>Botones, foco, raya de la pestaña activa</li><li>El pálido: selección de texto y de archivos</li><li>Archivos sin seguimiento en Git, pseudoclases CSS</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--lavanda);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,6</span></div><div class="txt"><h3>Lavanda</h3><div class="hex">#7D4FAA · pálido #E6DCF2</div><ul><li>Palabras clave: <code>if</code>, <code>def</code>, <code>class</code>, <code>return</code>, <code>const</code></li><li>Botones, foco, raya de la pestaña activa</li><li>El pálido: selección de texto y de archivos</li><li>Archivos sin seguimiento en Git, pseudoclases CSS</li></ul></div></div>
 
-    <div class="ficha"><div class="muestra" style="background:var(--celeste);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,8</span></div><div class="txt"><h3>Celeste</h3><div class="hex">#286A96</div><ul><li>Nombres de funciones y métodos</li><li>Propiedades CSS y claves de JSON/YAML</li><li>Enlaces e información</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--celeste);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,6</span></div><div class="txt"><h3>Celeste</h3><div class="hex">#286A96</div><ul><li>Nombres de funciones y métodos</li><li>Propiedades CSS y claves de JSON/YAML</li><li>Enlaces e información</li></ul></div></div>
 
-    <div class="ficha"><div class="muestra" style="background:var(--melocoton);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,6</span></div><div class="txt"><h3>Melocotón</h3><div class="hex">#A84E12 · pálido #F7CFA4</div><ul><li>Números, <code>True</code>, <code>None</code>, constantes en MAYÚSCULAS</li><li>Líneas y archivos modificados en Git</li><li>Valores CSS (<code>red</code>, <code>center</code>), <code>\n</code>, entidades <code>&amp;amp;</code></li><li>El pálido: resultados de búsqueda</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--melocoton);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,6</span></div><div class="txt"><h3>Melocotón</h3><div class="hex">#A34C12 · pálido #F7CFA4</div><ul><li>Números, <code>True</code>, <code>None</code>, constantes en MAYÚSCULAS</li><li>Líneas y archivos modificados en Git</li><li>Valores CSS (<code>red</code>, <code>center</code>), <code>\n</code>, entidades <code>&amp;amp;</code></li><li>El pálido: resultados de búsqueda</li></ul></div></div>
 
-    <div class="ficha"><div class="muestra" style="background:var(--mostaza);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">5,0</span></div><div class="txt"><h3>Mostaza</h3><div class="hex">#7C5E0C</div><ul><li>Atributos HTML: <code>class</code>, <code>href</code>, <code>src</code></li><li>Selectores de clase en CSS (<code>.cabecera</code>)</li><li>Advertencias</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--mostaza);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,8</span></div><div class="txt"><h3>Mostaza</h3><div class="hex">#7C5E0C</div><ul><li>Atributos HTML: <code>class</code>, <code>href</code>, <code>src</code></li><li>Selectores de clase en CSS (<code>.cabecera</code>)</li><li>Advertencias</li></ul></div></div>
 
-    <div class="ficha"><div class="muestra" style="background:var(--rosa);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,7</span></div><div class="txt"><h3>Rosa</h3><div class="hex">#A3427B</div><ul><li>Clases y tipos: <code>Alumno</code>, <code>str</code>, <code>bool</code></li><li>Decoradores (<code>@dataclass</code>)</li><li>Selectores de id en CSS (<code>#inicio</code>), conflictos de Git</li></ul></div></div>
+    <div class="ficha"><div class="muestra" style="background:var(--rosa);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,6</span></div><div class="txt"><h3>Rosa</h3><div class="hex">#A3427B</div><ul><li>Clases y tipos: <code>Alumno</code>, <code>str</code>, <code>bool</code></li><li>Decoradores (<code>@dataclass</code>)</li><li>Selectores de id en CSS (<code>#inicio</code>), conflictos de Git</li></ul></div></div>
   </div>
 
   <h2>Dónde probar cada cosa</h2>
