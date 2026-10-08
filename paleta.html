@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paleta Vainilla</title>
+  <style>
+    :root {
+      --vainilla: #FAF3E0;
+      --gris: #EAE4D3;
+      --gris-hondo: #DDD6C3;
+      --borde: #D6CEB8;
+      --cafe: #4A3F35;
+      --cafe-suave: #7A6E5E;
+      --comentario: #887D6B;
+      --menta: #2A7A59;
+      --menta-fondo: #D8F0E2;
+      --cereza: #B23A55;
+      --cereza-fondo: #F7DCE1;
+      --lavanda: #8456B0;
+      --lavanda-fondo: #E6DCF2;
+      --celeste: #2A6F9C;
+      --melocoton: #A8562A;
+      --melocoton-fondo: #F6DCC6;
+      --mostaza: #84650F;
+      --rosa: #A8457F;
+      --linea: #F3EBD3;
+      --mono: "Fira Code", "JetBrains Mono", ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--vainilla);
+      color: var(--cafe);
+      font: 16px/1.55 system-ui, sans-serif;
+    }
+    .pagina { max-width: 1080px; margin: 0 auto; padding: 32px 16px 64px; }
+    h1 { font-size: 2rem; margin: 0 0 4px; }
+    h1 span { color: var(--cereza); }
+    .sub { color: var(--cafe-suave); margin: 0 0 32px; }
+    h2 { font-size: 1.25rem; margin: 48px 0 6px; }
+    h2 + p { margin-top: 0; color: var(--cafe-suave); }
+    code { font-family: var(--mono); font-size: .9em; }
+
+    /* ---------- Ventana simulada ---------- */
+    .ventana {
+      border: 1px solid var(--borde);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px #4A3F3522;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .titulo { background: var(--gris-hondo); padding: 6px 12px; text-align: center; color: var(--cafe-suave); border-bottom: 1px solid var(--borde); }
+    .cuerpo { display: grid; grid-template-columns: 44px 210px 1fr; min-height: 380px; }
+    .iconos { background: var(--gris-hondo); border-right: 1px solid var(--borde); display: flex; flex-direction: column; align-items: center; gap: 14px; padding-top: 12px; }
+    .icono { width: 20px; height: 20px; border-radius: 4px; background: #9A8F7C55; position: relative; }
+    .icono.activo { background: var(--cafe); box-shadow: -12px 0 0 -9px var(--lavanda); }
+    .insignia { position: absolute; right: -7px; bottom: -6px; background: var(--cereza); color: var(--vainilla); border-radius: 8px; font-size: 9px; padding: 0 4px; }
+    .lateral { background: var(--gris); border-right: 1px solid var(--borde); padding: 8px 0; }
+    .lateral .cab { font-size: 11px; color: var(--cafe-suave); padding: 0 12px 6px; letter-spacing: .05em; }
+    .archivo { padding: 2px 12px 2px 22px; display: flex; justify-content: space-between; }
+    .archivo.sel { background: var(--lavanda-fondo); }
+    .archivo .letra { font-size: 11px; }
+    .nuevo { color: var(--menta); } .mod { color: var(--melocoton); } .borr { color: var(--cereza); text-decoration: line-through; } .sinseg { color: var(--lavanda); } .ign { color: #A39883; }
+    .editor { display: flex; flex-direction: column; min-width: 0; }
+    .pestanas { display: flex; background: var(--gris); border-bottom: 1px solid var(--borde); }
+    .pestana { padding: 6px 14px; color: var(--cafe-suave); border-right: 1px solid var(--borde); }
+    .pestana.activa { background: var(--vainilla); color: var(--cafe); box-shadow: inset 0 2px 0 var(--lavanda); }
+    .codigo { flex: 1; background: var(--vainilla); padding: 8px 0; overflow-x: auto; }
+    .l { display: grid; grid-template-columns: 6px 34px 1fr; white-space: pre; }
+    .l .n { color: #B5AA95; text-align: right; padding-right: 12px; }
+    .l .g { }
+    .l.actual { background: var(--linea); } .l.actual .n { color: var(--cafe); }
+    .l.mas { background: var(--menta-fondo); } .l.mas .g { background: var(--menta); }
+    .l.menos { background: var(--cereza-fondo); } .l.menos .g { background: var(--cereza); }
+    .l.cambio .g { background: var(--melocoton); }
+    .com { color: var(--comentario); font-style: italic; } .kw { color: var(--lavanda); } .str { color: var(--menta); } .fn { color: var(--celeste); } .num { color: var(--melocoton); } .tag { color: var(--cereza); } .attr { color: var(--mostaza); } .typ { color: var(--rosa); } .punt { color: #9A8F7C; }
+    .sel-texto { background: var(--lavanda-fondo); }
+    .busca { background: #F2C9A6; }
+    .cursor { border-left: 2px solid var(--cereza); margin-left: -1px; }
+    .error { text-decoration: underline wavy var(--cereza); text-underline-offset: 3px; }
+    .aviso { text-decoration: underline wavy var(--mostaza); text-underline-offset: 3px; }
+    .terminal { background: var(--vainilla); border-top: 1px solid var(--borde); padding: 6px 12px; }
+    .terminal .tit { font-size: 11px; color: var(--cafe-suave); margin-bottom: 4px; }
+    .terminal .tit b { color: var(--cafe); border-bottom: 1px solid var(--lavanda); font-weight: normal; }
+    .estado { background: var(--gris-hondo); border-top: 1px solid var(--borde); display: flex; gap: 16px; padding: 3px 0; font-size: 12px; }
+    .estado .remoto { background: var(--lavanda); color: var(--vainilla); padding: 0 10px; margin: -3px 0; display: flex; align-items: center; }
+
+    /* Marcas numeradas */
+    .m { display: inline-block; min-width: 18px; height: 18px; line-height: 18px; border-radius: 9px; background: var(--cafe); color: var(--vainilla); font: bold 11px/18px system-ui, sans-serif; text-align: center; padding: 0 4px; vertical-align: middle; margin: 0 2px; }
+
+    /* ---------- Fichas ---------- */
+    .fichas { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+    .ficha { background: var(--gris); border: 1px solid var(--borde); border-radius: 10px; overflow: hidden; }
+    .muestra { height: 64px; display: flex; align-items: end; justify-content: space-between; padding: 8px 12px; font: 600 13px/1 var(--mono); }
+    .ficha .txt { padding: 10px 14px 14px; }
+    .ficha h3 { margin: 0 0 2px; font-size: 1.05rem; }
+    .ficha .hex { font-family: var(--mono); color: var(--cafe-suave); font-size: .85rem; }
+    .ficha ul { margin: 8px 0 0; padding-left: 18px; }
+    .ficha li { margin: 2px 0; }
+    .contraste { float: right; font: 600 12px/1 var(--mono); background: var(--vainilla); border: 1px solid var(--borde); border-radius: 6px; padding: 4px 6px; }
+
+    /* ---------- Tabla de zonas ---------- */
+    table { width: 100%; border-collapse: collapse; background: var(--gris); border-radius: 10px; overflow: hidden; }
+    th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+    th { background: var(--gris-hondo); font-size: .9rem; }
+    tr:last-child td { border-bottom: 0; }
+    .tabla-scroll { overflow-x: auto; }
+
+    @media (max-width: 760px) {
+      .cuerpo { grid-template-columns: 36px 1fr; }
+      .lateral { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="pagina">
+
+  <h1>Paleta <span>Vainilla</span></h1>
+  <p class="sub">Qué color es cada cosa y dónde lo vas a ver en VS Code. Los números de la ventana corresponden a la tabla de abajo.</p>
+
+  <h2>Así se ve una ventana</h2>
+  <p>Simulación de VS Code con el tema puesto. Compárala con tu ventana real.</p>
+
+  <div class="ventana" aria-label="Simulación de una ventana de VS Code con el tema Vainilla">
+    <div class="titulo"><span class="m">1</span> muestra.py — tema-vainilla — Visual Studio Code</div>
+    <div class="cuerpo">
+      <div class="iconos">
+        <span class="m">2</span>
+        <div class="icono activo"></div>
+        <div class="icono"></div>
+        <div class="icono"><span class="insignia">3</span></div>
+        <div class="icono"></div>
+      </div>
+      <div class="lateral">
+        <div class="cab"><span class="m">4</span> EXPLORADOR</div>
+        <div class="archivo"><span class="nuevo">nuevo.html</span><span class="letra nuevo">A</span></div>
+        <div class="archivo sel"><span class="mod">muestra.py</span><span class="letra mod">M</span></div>
+        <div class="archivo"><span class="borr">viejo.css</span><span class="letra borr">D</span></div>
+        <div class="archivo"><span class="sinseg">borrador.md</span><span class="letra sinseg">U</span></div>
+        <div class="archivo"><span class="ign">node_modules</span></div>
+        <div class="archivo"><span>muestra.json</span></div>
+        <div style="padding:10px 12px 0"><span class="m">5</span> <span style="font-size:11px;color:var(--cafe-suave)">colores de Git</span></div>
+      </div>
+      <div class="editor">
+        <div class="pestanas">
+          <div class="pestana activa">muestra.py <span class="m">6</span></div>
+          <div class="pestana">muestra.html</div>
+        </div>
+        <div class="codigo">
+          <div class="l"><span class="g"></span><span class="n">1</span><span><span class="com"># Comentario</span> <span class="m">7</span></span></div>
+          <div class="l"><span class="g"></span><span class="n">2</span><span><span class="kw">from</span> dataclasses <span class="kw">import</span> <span class="fn">dataclass</span></span></div>
+          <div class="l mas"><span class="g"></span><span class="n">3</span><span><span class="typ">LIMITE</span> = <span class="num">100</span>  <span class="m">8</span> línea añadida</span></div>
+          <div class="l menos"><span class="g"></span><span class="n">4</span><span>saludo = <span class="str">"Adiós"</span>  <span class="m">9</span> línea borrada</span></div>
+          <div class="l cambio"><span class="g"></span><span class="n">5</span><span>saludo = <span class="str">"Hola"</span>  <span class="m">10</span> línea modificada</span></div>
+          <div class="l"><span class="g"></span><span class="n">6</span><span></span></div>
+          <div class="l"><span class="g"></span><span class="n">7</span><span><span class="kw">class</span> <span class="typ">Alumno</span>:</span></div>
+          <div class="l actual"><span class="g"></span><span class="n">8</span><span>    <span class="kw">def</span> <span class="fn">aprobado</span>(<span class="kw" style="font-style:italic">self</span>) -&gt; <span class="typ">bool</span>:<span class="cursor"></span>  <span class="m">11</span></span></div>
+          <div class="l"><span class="g"></span><span class="n">9</span><span>        <span class="kw">return</span> <span class="sel-texto">self.nota</span> &gt;= <span class="num">5</span>  <span class="m">12</span></span></div>
+          <div class="l"><span class="g"></span><span class="n">10</span><span></span></div>
+          <div class="l"><span class="g"></span><span class="n">11</span><span><span class="fn">print</span>(<span class="busca">saludo</span>, <span class="error">nombre</span>, <span class="aviso">os</span>)  <span class="m">13</span></span></div>
+          <div class="l"><span class="g"></span><span class="n">12</span><span><span class="punt">&lt;</span><span class="tag">a</span> <span class="attr">href</span>=<span class="str">"index.html"</span><span class="punt">&gt;</span>Inicio<span class="punt">&lt;/</span><span class="tag">a</span><span class="punt">&gt;</span>  <span class="m">14</span></span></div>
+        </div>
+        <div class="terminal">
+          <div class="tit"><b>TERMINAL</b> &nbsp; PROBLEMAS &nbsp; <span class="m">15</span></div>
+          <div><span class="str">SrYena@fedora</span>:<span class="fn">~/tema-vainilla</span>$ git status</div>
+          <div>&nbsp;&nbsp;<span class="tag">modificado: muestra.py</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="estado"><span class="remoto">&gt;&lt;</span> <span>master</span> <span>⊗ 1 &nbsp;⚠ 1</span> <span class="m">16</span> <span style="margin-left:auto;padding-right:12px">Python · UTF-8</span></div>
+  </div>
+
+  <h2>Zonas de la ventana</h2>
+  <p>Cada número de la simulación, con su color.</p>
+  <div class="tabla-scroll">
+  <table>
+    <thead><tr><th>#</th><th>Zona</th><th>Color</th></tr></thead>
+    <tbody>
+      <tr><td><span class="m">1</span></td><td>Barra de título (arriba del todo)</td><td>Vainilla grisáceo hondo <code>#DDD6C3</code></td></tr>
+      <tr><td><span class="m">2</span></td><td>Barra de iconos (izquierda). La raya del icono activo</td><td>Vainilla grisáceo hondo · raya en lavanda</td></tr>
+      <tr><td><span class="m">3</span></td><td>Globito con número sobre un icono (cambios pendientes)</td><td>Cereza</td></tr>
+      <tr><td><span class="m">4</span></td><td>Barra lateral: explorador, búsqueda, Git</td><td>Vainilla grisáceo <code>#EAE4D3</code> · selección en lavanda pálido</td></tr>
+      <tr><td><span class="m">5</span></td><td>Nombres de archivo según Git</td><td>Nuevo (A) menta · modificado (M) melocotón · borrado (D) cereza · sin seguimiento (U) lavanda · ignorado gris</td></tr>
+      <tr><td><span class="m">6</span></td><td>Pestañas</td><td>Activa en vainilla con raya lavanda arriba · inactivas en vainilla grisáceo</td></tr>
+      <tr><td><span class="m">7</span></td><td>Editor y comentarios</td><td>Fondo vainilla <code>#FAF3E0</code> · texto café · comentarios gris cálido en cursiva</td></tr>
+      <tr><td><span class="m">8</span></td><td>Línea añadida (Git)</td><td>Raya del margen menta · fondo menta claro en la vista de cambios</td></tr>
+      <tr><td><span class="m">9</span></td><td>Línea borrada (Git)</td><td>Raya cereza · fondo cereza claro en la vista de cambios</td></tr>
+      <tr><td><span class="m">10</span></td><td>Línea modificada (Git)</td><td>Raya del margen melocotón</td></tr>
+      <tr><td><span class="m">11</span></td><td>Línea del cursor y el cursor</td><td>Vainilla un poco más oscuro · cursor cereza</td></tr>
+      <tr><td><span class="m">12</span></td><td>Texto seleccionado</td><td>Lavanda pálido <code>#E6DCF2</code></td></tr>
+      <tr><td><span class="m">13</span></td><td>Búsqueda (Ctrl+F), errores y advertencias</td><td>Coincidencia en melocotón pálido · error subrayado en cereza · advertencia en mostaza</td></tr>
+      <tr><td><span class="m">14</span></td><td>HTML</td><td>Etiqueta cereza · atributo mostaza · valor menta · <code>&lt; &gt;</code> gris</td></tr>
+      <tr><td><span class="m">15</span></td><td>Panel inferior: terminal, problemas</td><td>Fondo vainilla · pestaña activa con raya lavanda · colores de la terminal sacados de la paleta</td></tr>
+      <tr><td><span class="m">16</span></td><td>Barra de estado (abajo del todo)</td><td>Vainilla grisáceo hondo · botón remoto en lavanda</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Los colores, uno a uno</h2>
+  <p>El número de la derecha es el contraste sobre el fondo vainilla: a partir de 4,5 se lee bien (WCAG AA).</p>
+
+  <div class="fichas">
+    <div class="ficha"><div class="muestra" style="background:var(--vainilla);border-bottom:1px solid var(--borde)"><span>Aa</span></div><div class="txt"><h3>Vainilla</h3><div class="hex">#FAF3E0</div><ul><li>Fondo del editor</li><li>Pestaña activa, terminal, campos de texto</li></ul></div></div>
+
+    <div class="ficha"><div class="muestra" style="background:var(--gris)"><span>Aa</span></div><div class="txt"><h3>Vainilla grisáceo</h3><div class="hex">#EAE4D3 · hondo #DDD6C3</div><ul><li>Barra lateral, pestañas inactivas</li><li>Menús, ventanas emergentes, autocompletado</li><li>El hondo: barra de iconos, de título y de estado</li></ul></div></div>
+
+    <div class="ficha"><div class="muestra" style="background:var(--cafe);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">9,2</span></div><div class="txt"><h3>Café</h3><div class="hex">#4A3F35</div><ul><li>Todo el texto normal y las variables</li><li>Parámetros (en cursiva)</li></ul></div></div>
+
+    <div class="ficha"><div class="muestra" style="background:var(--comentario);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">3,7</span></div><div class="txt"><h3>Gris cálido</h3><div class="hex">#887D6B</div><ul><li>Comentarios, en cursiva (a propósito más suaves)</li><li>Pistas de VS Code dentro del código</li></ul></div></div>
+
+    <div class="ficha"><div class="muestra" style="background:var(--menta);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,7</span></div><div class="txt"><h3>Menta</h3><div class="hex">#2A7A59 · fondo #D8F0E2</div><ul><li>Líneas añadidas (+) y archivos nuevos</li><li>Textos entre comillas y valores de atributos</li><li>Código en línea en Markdown</li></ul></div></div>
+
+    <div class="ficha"><div class="muestra" style="background:var(--cereza);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">5,2</span></div><div class="txt"><h3>Cereza</h3><div class="hex">#B23A55 · fondo #F7DCE1</div><ul><li>Líneas borradas (−) y archivos borrados</li><li>Errores, el cursor y los globitos de aviso</li><li>Etiquetas HTML, selectores de etiqueta en CSS y títulos de Markdown</li></ul></div></div>
+
+    <div class="ficha"><div class="muestra" style="background:var(--lavanda);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,8</span></div><div class="txt"><h3>Lavanda</h3><div class="hex">#8456B0 · pálido #E6DCF2</div><ul><li>Palabras clave: <code>if</code>, <code>def</code>, <code>class</code>, <code>return</code>, <code>const</code></li><li>Botones, foco, raya de la pestaña activa</li><li>El pálido: selección de texto y de archivos</li><li>Archivos sin seguimiento en Git, pseudoclases CSS</li></ul></div></div>
+
+    <div class="ficha"><div class="muestra" style="background:var(--celeste);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,9</span></div><div class="txt"><h3>Celeste</h3><div class="hex">#2A6F9C</div><ul><li>Nombres de funciones y métodos</li><li>Propiedades CSS y claves de JSON/YAML</li><li>Enlaces e información</li></ul></div></div>
+
+    <div class="ficha"><div class="muestra" style="background:var(--melocoton);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,7</span></div><div class="txt"><h3>Melocotón</h3><div class="hex">#A8562A · pálido #F6DCC6</div><ul><li>Números, <code>True</code>, <code>None</code>, constantes en MAYÚSCULAS</li><li>Líneas y archivos modificados en Git</li><li>Valores CSS (<code>red</code>, <code>center</code>), <code>\n</code>, entidades <code>&amp;amp;</code></li><li>El pálido: resultados de búsqueda</li></ul></div></div>
+
+    <div class="ficha"><div class="muestra" style="background:var(--mostaza);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">4,9</span></div><div class="txt"><h3>Mostaza</h3><div class="hex">#84650F</div><ul><li>Atributos HTML: <code>class</code>, <code>href</code>, <code>src</code></li><li>Selectores de clase en CSS (<code>.cabecera</code>)</li><li>Advertencias</li></ul></div></div>
+
+    <div class="ficha"><div class="muestra" style="background:var(--rosa);color:var(--vainilla)"><span>Aa</span><span class="contraste" style="color:var(--cafe)">5,0</span></div><div class="txt"><h3>Rosa</h3><div class="hex">#A8457F</div><ul><li>Clases y tipos: <code>Alumno</code>, <code>str</code>, <code>bool</code></li><li>Decoradores (<code>@dataclass</code>)</li><li>Selectores de id en CSS (<code>#inicio</code>), conflictos de Git</li></ul></div></div>
+  </div>
+
+  <h2>Dónde probar cada cosa</h2>
+  <p>Abre estos archivos de <code>muestras/</code> con el tema puesto. Cada uno dice en sus comentarios qué color debería verse.</p>
+  <div class="tabla-scroll">
+  <table>
+    <thead><tr><th>Archivo</th><th>Qué enseña</th></tr></thead>
+    <tbody>
+      <tr><td><code>muestra.py</code></td><td>Python: palabras clave, funciones, clases, decoradores, números, textos. Además tiene cambios sin commitear: verás las rayas menta, cereza y melocotón en el margen</td></tr>
+      <tr><td><code>muestra.html</code></td><td>Etiquetas, atributos, entidades y JavaScript dentro de HTML</td></tr>
+      <tr><td><code>muestra.css</code></td><td>Selectores de etiqueta, clase, id y pseudoclase; propiedades y valores</td></tr>
+      <tr><td><code>muestra.md</code></td><td>Markdown: títulos, listas, enlaces, citas y código</td></tr>
+      <tr><td><code>muestra.json</code></td><td>Claves, textos, números y <code>true</code>/<code>null</code></td></tr>
+      <tr><td>Control de código fuente (Ctrl+Shift+G)</td><td>Pulsa sobre <code>muestra.py</code>: vista de cambios con fondos menta y cereza</td></tr>
+      <tr><td>Terminal (Ctrl+ñ)</td><td>Colores de la terminal, por ejemplo con <code>git status</code> o <code>ls --color</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+</div>
+</body>
+</html>

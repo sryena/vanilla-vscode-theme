@@ -1,0 +1,7 @@
+{
+  "clave": "las claves van en CELESTE y los textos en MENTA",
+  "numero": 42,
+  "activo": true,
+  "lista": [1, 2, 3],
+  "nada": null
+}
