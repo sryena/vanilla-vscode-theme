@@ -2,7 +2,7 @@
   "name": "vainilla",
   "displayName": "Vainilla",
   "description": "Tema claro de fondo vainilla con acentos pastel: menta, cereza, lavanda, celeste, melocotón, mostaza y rosa.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "sryena",
   "engines": {
     "vscode": "^1.80.0"

@@ -1,6 +1,6 @@
 # Vainilla
 
-Tema claro para VS Code: fondo vainilla, zonas oscuras en vainilla grisáceo y
+Tema claro para VS Code: fondo vainilla amarillento, zonas oscuras en vainilla grisáceo, texto café con leche y
 acentos pastel (menta, cereza, lavanda, celeste, melocotón, mostaza y rosa),
 todos con contraste legible sobre el fondo.
 
