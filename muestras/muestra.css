@@ -3,7 +3,7 @@
 /* Selector de etiqueta: CEREZA */
 body {
   /* Propiedades: CELESTE · valores con nombre: MELOCOTÓN · números y unidades: MELOCOTÓN */
-  background-color: #F7E49B;
+  background-color: #F9E9AF;
   color: #654027;
   font-family: "Fira Code", monospace;   /* texto entre comillas: MENTA */
   margin: 0 auto;
@@ -19,7 +19,7 @@ body {
 
 /* Selector de id: ROSA */
 #inicio {
-  border-bottom: 2px solid #C3B788;
+  border-bottom: 2px solid #CFC5A0;
 }
 
 /* Pseudoclase (:hover): LAVANDA */
