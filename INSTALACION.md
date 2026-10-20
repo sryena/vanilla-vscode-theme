@@ -5,7 +5,7 @@ pasos: descargarlo, instalarlo y activarlo.
 
 ## 1. Descargar el tema
 
-Descarga **[vainilla-0.4.1.vsix](https://github.com/sryena/tema-vainilla/raw/main/releases/vainilla-0.4.1.vsix)**
+Descarga **[vainilla-0.4.1.vsix](https://github.com/sryena/vanilla-vscode-theme/raw/main/releases/vainilla-0.4.1.vsix)**
 y déjalo en una carpeta que encuentres fácil, por ejemplo **Descargas**.
 
 ## 2. Instalarlo
@@ -83,4 +83,4 @@ code --uninstall-extension sryena.vainilla
 | Lo instalé y no lo veo en la lista de temas | Recarga la ventana (`Ctrl+Shift+P` → **Developer: Reload Window**) y vuelve a `Ctrl+K Ctrl+T`. |
 | Algunos colores no cambian | Otra extensión o tu `settings.json` puede estar pisándolos: revisa si tienes `workbench.colorCustomizations` o `editor.tokenColorCustomizations`. |
 
-¿Algo más? Abre una *issue* en [GitHub](https://github.com/sryena/tema-vainilla/issues).
+¿Algo más? Abre una *issue* en [GitHub](https://github.com/sryena/vanilla-vscode-theme/issues).

@@ -5,12 +5,12 @@ que se leen bien todo el día.
 
 ![Vista previa del tema Vainilla](docs/vista-previa.png)
 
-**[Prueba la demo interactiva](https://sryena.github.io/tema-vainilla/)**: pasa el ratón por el código
+**[Prueba la demo interactiva](https://sryena.github.io/vanilla-vscode-theme/)**: pasa el ratón por el código
 para ver qué significa cada color.
 
 ## Instalación rápida
 
-1. Descarga **[vainilla-0.4.1.vsix](https://github.com/sryena/tema-vainilla/raw/main/releases/vainilla-0.4.1.vsix)**.
+1. Descarga **[vainilla-0.4.1.vsix](https://github.com/sryena/vanilla-vscode-theme/raw/main/releases/vainilla-0.4.1.vsix)**.
 2. Instálalo desde una terminal:
 
    ```bash

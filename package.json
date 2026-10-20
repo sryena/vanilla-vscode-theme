@@ -21,8 +21,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sryena/tema-vainilla"
+    "url": "https://github.com/sryena/vanilla-vscode-theme"
   },
-  "homepage": "https://sryena.github.io/tema-vainilla/",
+  "homepage": "https://sryena.github.io/vanilla-vscode-theme/",
   "license": "MIT"
 }
