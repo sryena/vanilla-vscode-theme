@@ -70,6 +70,11 @@ La guía visual completa, con qué color lleva cada parte de la ventana, está e
 - **0.2.0** (2026-10-08): fondo más amarillo, grises de vainilla, café con leche y melocotón anaranjado.
 - **0.1.0** (2026-10-08): primera versión, con la paleta y las muestras.
 
+## Licencia
+
+[MIT](LICENSE): puedes usar, copiar, modificar y compartir el tema, también en proyectos comerciales,
+siempre que mantengas el aviso de copyright.
+
 ## Autor
 
 Hecho por **Yenai Lorente Casado**, estudiante de ASIX. Más sobre mí en
